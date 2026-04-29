@@ -2,7 +2,7 @@
 
 <a name="português"></a>
 
-# PROJECT_NAME
+# PF_ai
 
 Este README serve como documentação tanto de desenvolvimento quanto de uso do sistema, fornecendo guias para desenvolvedores e usuários finais.
 
@@ -105,7 +105,7 @@ AGUARDANDO COMANDO INICIAL OU DEFINIÇÃO DE PROJETO.
 
 <a name="english"></a>
 
-# PROJECT_NAME (English)
+# PF_ai (English)
 
 This README serves as both development and usage documentation for the system, providing guides for developers and end users.
 
