@@ -2,16 +2,16 @@
 
 <a name="português"></a>
 ## 📝 Visão Geral do Projeto
-O **PF_ai** é um ecossistema de desenvolvimento assistido por inteligência artificial fundamentado no framework **GSD (Get Shit Done)** [6, 7]. Diferente de repositórios convencionais, este projeto utiliza uma arquitetura de múltiplos agentes (**CEO, CTO, DEV, QA**) para garantir que a construção de software seja realizada com rastreabilidade total, consistência arquitetural e qualidade técnica rigorosa [8-11].
+O **PF_ai** é um ecossistema de desenvolvimento assistido por inteligência artificial fundamentado no framework **GSD (Get Shit Done)**. Diferente de repositórios convencionais, este projeto utiliza uma arquitetura de múltiplos agentes (**CEO, CTO, DEV, QA**) para garantir que a construção de software seja realizada com rastreabilidade total, consistência arquitetural e qualidade técnica rigorosa.
 
 ### ⚠️ Aviso de Boilerplate
-**Este documento e todos os arquivos deste repositório representam uma estrutura base (Boilerplate) no estado `v1.1.0` [12].** 
-Todas as informações, tecnologias, descrições e objetivos listados são modelos genéricos. **Tudo será alterado e personalizado** assim que o projeto for formalmente iniciado através do protocolo de **Onboarding** [4, 13]. O estado real do sistema será definido pela interação inicial entre o usuário e o Agente de Orquestração [14, 15].
+**Este documento e todos os arquivos deste repositório representam uma estrutura base (Boilerplate) no estado `v1.1.0`.** 
+Todas as informações, tecnologias, descrições e objetivos listados são modelos genéricos. **Tudo será alterado e personalizado** assim que o projeto for formalmente iniciado através do protocolo de **Onboarding**. O estado real do sistema será definido pela interação inicial entre o usuário e o Agente de Orquestração.
 
 ---
 
 ## 🤖 Prompt Inicial para IA (Ignition Protocol)
-*Esta seção contém as instruções mestre que a IA deve ler para assumir o controle dos agentes e iniciar qualquer atividade [1, 3].*
+*Esta seção contém as instruções mestre que a IA deve ler para assumir o controle dos agentes e iniciar qualquer atividade.*
 
 ```text
 [SISTEMA DE ATIVAÇÃO GSD - OPERAÇÃO EM MODO EXPERTO]
