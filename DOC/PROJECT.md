@@ -31,7 +31,7 @@ This file defines the product vision and must be filled **completely and without
 - **Reviewer:** [Who approves stages]
 
 ### 5.1 AI Agent Roles
-- **Default Agents:** CEO, CTO, QA, DEV_FRONTEND, DEV_BACKEND.
+- **Default Agents:** CEO, CTO, QA, DEV_FRONTEND, DEV_BACKEND, DBA.
 - **Creating New Agents:** If it is necessary to create a new agent (e.g., Seniority levels, CMO, Data Scientist), you must create a new `.md` file in the `AGENTS/` directory with their specific rules, document access limits, and responsibilities.
 - **Late Addition:** If a new role/agent is needed after the project has started, use `NEW-INSTRUCTIONS.md` to request and define its creation.
 

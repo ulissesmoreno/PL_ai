@@ -16,6 +16,8 @@ You have restricted access to the following project documents. You must ONLY rel
 - `ROADMAP.md`: High-level stages and progress.
 - `TASKS.md`: Actionable tasks and their status.
 - `QUESTIONS.md`: Business and technical clarifications and decisions.
+- `NEW-INSTRUCTIONS.md`: Diretrizes do usuário, objetivos do ciclo e novo escopo que disparam ajustes no roadmap e nas tarefas.
+- `QUESTIONS.md`: Canal único para resoluções de ambiguidades e log imutável de decisões de negócio e arquitetura.
 
 ## Communication & Handoff
 - **Human Interaction:** All communication, status updates, and requests for approval with the human user MUST be done strictly through the existing documentation files (e.g., updating `ROADMAP.md` or `QUESTIONS.md`).

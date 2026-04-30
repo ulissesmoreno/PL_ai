@@ -123,7 +123,7 @@
 | :--- | :--- | :--- |
 | [2026-04-25 21:25] | **Read all docs before acting.** README, GSD-RULES, CONTEXT, NEW-INSTRUCTIONS — all before any code. | No assumptions. No undocumented actions. |
 | [2026-04-25 21:25] | **Register all ambiguities in QUESTIONS.md.** Stop and ask instead of assuming. | Pending questions block execution. |
-| [2026-04-25 21:25] | **Bilingual documentation by default** — PT as primary language, EN as mirror. | Both DOC/ and DOC/ must stay in sync. |
+| [2026-04-25 21:25] | **Bilingual documentation by default** — PT as primary language, EN as mirror. | DOC/ must stay in sync. |
 | [2026-04-25 21:25] | **Never skip the Stage Closure Checklist** before starting a new roadmap stage. | User approval is mandatory; verbal "go ahead" is not sufficient. |
 | [2026-04-25 21:25] | **Skills first.** Check Antigravity environment skills before writing generic code. | Skills take precedence over generic knowledge. |
 | [2026-04-25 21:25] | **Present options before creating.** For naming, structure, or ambiguous choices — suggest, don't decide alone. | Respects user's decision-making authority. |

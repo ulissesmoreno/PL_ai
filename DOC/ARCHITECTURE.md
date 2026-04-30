@@ -1,7 +1,7 @@
 # ARCHITECTURE.md -
 
 ## 1. System Overview
-This system is xxx. It uses **Hexagonal Architecture (Ports & Adapters)** to ensure that the business core is resilient, testable, and fully independent of external technologies (such as market APIs or persistence frameworks).
+This system is `[PROJECT_NAME]`. It uses **Hexagonal Architecture (Ports & Adapters)** to ensure that the business core is resilient, testable, and fully independent of external technologies (such as market APIs or persistence frameworks).
 
 ## 2. Development Pillars (GSD Framework)
 * **Get Shit Done (GSD):** Focus on functional delivery and high-impact executable code.
