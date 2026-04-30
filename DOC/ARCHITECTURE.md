@@ -95,59 +95,59 @@ Every handoff file must include these identification and traceability fields:
 4.2.2. **Schema: Task Delegation (CEO → DEV)**
 Used when the CEO moves a task from the roadmap to implementation.
 
-{
-  "header": {
-    "timestamp": "2026-04-30 16:20",
-    "sender": "[CEO]",
-    "recipient": "[DEV]",
-    "task_ref": "TASK-001",
-    "intent": "DELEGATION"
-  },
-  "payload": {
-    "stage_ref": "ROADMAP.md#Phase-1",
-    "plan_ref": "PLAN.md#Stage-1",
-    "constraints": ["TDD mandatory", "Hexagonal isolation"],
-    "priority": "High"
-  }
-}
+    {
+    "header": {
+        "timestamp": "2026-04-30 16:20",
+        "sender": "[CEO]",
+        "recipient": "[DEV]",
+        "task_ref": "TASK-001",
+        "intent": "DELEGATION"
+    },
+    "payload": {
+        "stage_ref": "ROADMAP.md#Phase-1",
+        "plan_ref": "PLAN.md#Stage-1",
+        "constraints": ["TDD mandatory", "Hexagonal isolation"],
+        "priority": "High"
+    }
+    }
 
 4.2.3. **Schema: Feature Validation (DEV → QA)**
 Used when the developer finishes an implementation and requests a quality gate check.
 
-{
-  "header": {
-    "timestamp": "2026-04-30 18:45",
-    "sender": "[DEV]",
-    "recipient": "[QA]",
-    "task_ref": "TASK-001",
-    "intent": "TEST_VALIDATION"
-  },
-  "payload": {
-    "artifacts": ["src/domain/entity/User.java", "src/infrastructure/adapter/UserRepo.java"],
-    "test_file": "TESTS.md#Test-1",
-    "coverage_report": "target/site/jacoco/index.html",
-    "status": "Green"
-  }
-}
+    {
+    "header": {
+        "timestamp": "2026-04-30 18:45",
+        "sender": "[DEV]",
+        "recipient": "[QA]",
+        "task_ref": "TASK-001",
+        "intent": "TEST_VALIDATION"
+    },
+    "payload": {
+        "artifacts": ["src/domain/entity/User.java", "src/infrastructure/adapter/UserRepo.java"],
+        "test_file": "TESTS.md#Test-1",
+        "coverage_report": "target/site/jacoco/index.html",
+        "status": "Green"
+    }
+    }
 
 4.2.4. **Schema: QA Report (QA → CEO/DEV)**
 Used to approve a stage closure or report regressions.
 
-{
-  "header": {
-    "timestamp": "2026-04-30 20:10",
-    "sender": "[QA]",
-    "recipient": "[CEO]",
-    "task_ref": "TASK-001",
-    "intent": "STAGE_APPROVAL"
-  },
-  "payload": {
-    "status": "PASSED",
-    "checklist_validated": true,
-    "security_scan": "SAST Clean",
-    "observations": "Ready for Roadmap Phase 1 closure gate."
-  }
-}
+    {
+    "header": {
+        "timestamp": "2026-04-30 20:10",
+        "sender": "[QA]",
+        "recipient": "[CEO]",
+        "task_ref": "TASK-001",
+        "intent": "STAGE_APPROVAL"
+    },
+    "payload": {
+        "status": "PASSED",
+        "checklist_validated": true,
+        "security_scan": "SAST Clean",
+        "observations": "Ready for Roadmap Phase 1 closure gate."
+    }
+    }
 
 ## 5. Data Flow (Data Lifecycle)
 
