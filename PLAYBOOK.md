@@ -61,6 +61,7 @@
 | Timestamp | Choice | Context |
 | :--- | :--- | :--- |
 | [2026-04-25 21:25] | **Java 21 + Spring Boot 3** | Primary backend for rule orchestration, API gateway, and security. |
+| [2026-04-29 20:35] | **C# / .NET** | Primary backend replacing Java for full CRUD and business rules in this project. |
 | [2026-04-25 21:25] | **Python 3.12** | Data processing, ML pipelines, automation scripts. |
 
 ### 3.2 Frontend
@@ -68,6 +69,7 @@
 | :--- | :--- | :--- |
 | [2026-04-25 21:25] | **Angular 18 / TypeScript** | Default web frontend — dashboards, admin panels, complex forms. |
 | [2026-04-25 21:25] | **React Native + Expo** | Preferred for mobile MVP (hybrid, iOS + Android). |
+| [2026-04-29 20:35] | **React Native (Web e Mobile)** | Utilizado como frontend único (web e mobile) substituindo Angular. |
 
 ### 3.3 Database
 | Timestamp | Choice | Context |
@@ -109,6 +111,7 @@
 | [2026-04-25 21:25] | **Atomic commits.** One concern per commit. Conventional Commits format. | `feat`, `fix`, `docs`, `refactor`, `test`, `chore`. |
 | [2026-04-29 20:35] | **Developer as Manager.** O desenvolvedor atua apenas como gerente do projeto. | Delegação integral da escrita de código, QA e arquitetura para os IAs. |
 | [2026-04-29 21:07] | **Branching por ROADMAP Phase.** Cada fase rodará em uma branch isolada. | A Fase 0 é a única desenvolvida diretamente na `main`. As próximas criam PRs. |
+| [2026-04-30 16:03] | **Git & Branching Strategy:** | Para cada nova fase do projeto, criar branch dedicada e realizar commits atômicos de estado. |
 
 ---
 
@@ -127,7 +130,10 @@
 | [2026-04-25 21:25] | **Concise responses.** Summary after completion; no repetition of what the user already knows. | Quality over verbosity. |
 | [2026-04-29 20:59] | **No autonomous execution before approval.** | Preencher documentação de planejamento e aguardar autorização humana *explícita* antes de rodar qualquer comando no terminal ou alterar código fonte. |
 | [2026-04-29 20:59] | **Native files over artifacts.** | Planejamentos devem ser preenchidos diretamente nos arquivos do projeto (ex: `PLAN.md`). Nunca gerar "Implementation_Plan.md" ou arquivos efêmeros via ferramenta da IDE. |
-
+| [2026-04-30 16:03] | **Check for existing files.** | Não recriar arquivos que já existem; sempre procurar no diretório completo primeiro. |
+| [2026-04-30 16:03] | **Correct file placement.** | Mover o conteúdo de arquivos gerados incorretamente para o local correto. |
+| [2026-04-30 16:03] | **Agent & Target identification.** | Ao ler arquivos de documentação, identificar qual agente executará cada tarefa e os arquivos modificados. |
+| [2026-04-30 16:03] | **Sync STATE and TASKS.** | Sempre atualizar `STATE.md` e `TASKS.md` para refletir mudanças decorrentes de novas instruções. |
 
 ---
 
@@ -165,6 +171,7 @@
 | Timestamp | Author | Change |
 | :--- | :--- | :--- |
 | [2026-04-25 21:25] | Developer | Initial PLAYBOOK created. Sections 1–7 populated with baseline preferences from boilerplate project. |
+| [2026-04-30 16:03] | Agente de IA | Adicionadas preferências de branching, verificação de arquivos e identificação de tarefas/agentes baseadas no NEW-INSTRUCTIONS.md. |
 
 ---
 
