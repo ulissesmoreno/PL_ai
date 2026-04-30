@@ -107,6 +107,8 @@
 | [2026-04-25 21:25] | **Stage Closure Gate** before advancing any roadmap phase. | Checklist of 8 files must be verified and confirmed by user. |
 | [2026-04-25 21:25] | **`.env` is never committed.** All credentials in vault or local env vars. | ENV_SETUP.md guides configuration without exposing values. |
 | [2026-04-25 21:25] | **Atomic commits.** One concern per commit. Conventional Commits format. | `feat`, `fix`, `docs`, `refactor`, `test`, `chore`. |
+| [2026-04-29 20:35] | **Developer as Manager.** O desenvolvedor atua apenas como gerente do projeto. | Delegação integral da escrita de código, QA e arquitetura para os IAs. |
+| [2026-04-29 21:07] | **Branching por ROADMAP Phase.** Cada fase rodará em uma branch isolada. | A Fase 0 é a única desenvolvida diretamente na `main`. As próximas criam PRs. |
 
 ---
 
@@ -123,6 +125,9 @@
 | [2026-04-25 21:25] | **Skills first.** Check Antigravity environment skills before writing generic code. | Skills take precedence over generic knowledge. |
 | [2026-04-25 21:25] | **Present options before creating.** For naming, structure, or ambiguous choices — suggest, don't decide alone. | Respects user's decision-making authority. |
 | [2026-04-25 21:25] | **Concise responses.** Summary after completion; no repetition of what the user already knows. | Quality over verbosity. |
+| [2026-04-29 20:59] | **No autonomous execution before approval.** | Preencher documentação de planejamento e aguardar autorização humana *explícita* antes de rodar qualquer comando no terminal ou alterar código fonte. |
+| [2026-04-29 20:59] | **Native files over artifacts.** | Planejamentos devem ser preenchidos diretamente nos arquivos do projeto (ex: `PLAN.md`). Nunca gerar "Implementation_Plan.md" ou arquivos efêmeros via ferramenta da IDE. |
+
 
 ---
 
