@@ -80,6 +80,75 @@ The hexagonal architecture completely decouples the backend from its clients. Th
 
 > **Agent Note:** When starting a new client, register the technology choice in `PROJECT.md` and evaluate available skills in the environment (see GSD-RULES §9) before starting implementation.
 
+## 4.2 Agent Communication Schemas (.agent_handoff)
+To ensure deterministic and programmatic handoff between specialized agents (CEO, CTO, DEV, QA), all files in the .agent_handoff/ directory must follow these structured schemas.
+
+4.2.1. **General Handoff Header (Mandatory for all files)**
+Every handoff file must include these identification and traceability fields:
+
+    timestamp: YYYY-MM-DD HH:MM (GSD standard).
+    sender: The tag of the agent initiating the handoff (e.g., [CEO], [DEV]).
+    recipient: The tag of the target agent.
+    task_ref: ID or link to the specific task in TASKS.md.
+    intent: The objective of the communication (e.g., DELEGATION, REVIEW_REQUEST, TEST_VALIDATION, BUG_REPORT).
+
+4.2.2. **Schema: Task Delegation (CEO → DEV)**
+Used when the CEO moves a task from the roadmap to implementation.
+
+{
+  "header": {
+    "timestamp": "2026-04-30 16:20",
+    "sender": "[CEO]",
+    "recipient": "[DEV]",
+    "task_ref": "TASK-001",
+    "intent": "DELEGATION"
+  },
+  "payload": {
+    "stage_ref": "ROADMAP.md#Phase-1",
+    "plan_ref": "PLAN.md#Stage-1",
+    "constraints": ["TDD mandatory", "Hexagonal isolation"],
+    "priority": "High"
+  }
+}
+
+4.2.3. **Schema: Feature Validation (DEV → QA)**
+Used when the developer finishes an implementation and requests a quality gate check.
+
+{
+  "header": {
+    "timestamp": "2026-04-30 18:45",
+    "sender": "[DEV]",
+    "recipient": "[QA]",
+    "task_ref": "TASK-001",
+    "intent": "TEST_VALIDATION"
+  },
+  "payload": {
+    "artifacts": ["src/domain/entity/User.java", "src/infrastructure/adapter/UserRepo.java"],
+    "test_file": "TESTS.md#Test-1",
+    "coverage_report": "target/site/jacoco/index.html",
+    "status": "Green"
+  }
+}
+
+4.2.4. **Schema: QA Report (QA → CEO/DEV)**
+Used to approve a stage closure or report regressions.
+
+{
+  "header": {
+    "timestamp": "2026-04-30 20:10",
+    "sender": "[QA]",
+    "recipient": "[CEO]",
+    "task_ref": "TASK-001",
+    "intent": "STAGE_APPROVAL"
+  },
+  "payload": {
+    "status": "PASSED",
+    "checklist_validated": true,
+    "security_scan": "SAST Clean",
+    "observations": "Ready for Roadmap Phase 1 closure gate."
+  }
+}
+
 ## 5. Data Flow (Data Lifecycle)
 
 1. **Ingestion:**
