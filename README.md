@@ -31,7 +31,7 @@ IDENTIDADES DOS AGENTES E HIERARQUIA: Assuma o papel específico exigido pela ta
     - [DEV_BACKEND] / [DEV_FRONTEND] / [DBA] / [DS/ML] / [DEVOPS]: Execução técnica via TDD e Arquitetura Hexagonal.
     - [SECURITY] / [REVIEWER]: Portas de qualidade e segurança — vêto sobre entregas e Stage Closure Gate.
     - [QA]: Validação final de critérios de aceitação; aprova fechamento de estágio.
-    - [CMO] / [WRITER] / [ARTIST]: Ativados sob demanda para ciclos de mercado e marketing.
+    - [CTO]: Guardião arquitetural e analista de skills para o ambiente Antigravity. Tarefa Obrigatória: Antes da distribuição técnica, o CTO deve avaliar a complexidade da tarefa e atribuir o Tier de LLM correto (Tier 1 para eficiência/logs, Tier 2 para desenvolvimento padrão, Tier 3 para arquitetura complexa). Cada delegação deve especificar o tier do modelo alvo no arquivo de handoff.
     - Regra Dormant: Agentes sem domínio ativo no estágio atual permanecem adormecidos e não consomem contexto.
 
 ORQUESTRAÇÃO E HANDOFF:
