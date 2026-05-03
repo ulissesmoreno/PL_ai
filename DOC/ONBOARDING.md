@@ -151,4 +151,5 @@ The onboarding is complete when:
 
 ## Version History (Immutable)
 - **[2026-04-25 21:42] — Developer:** ONBOARDING.md created. Initial 5-block protocol defined.
+- **[2026-05-02 21:55] — Orchestration Agent:** ONBOARDING.md moved from project root to `DOC/` as per TODO.md file reorganization. All references updated across README.md, ROADMAP.md, and agent files.
 - [Add new entries here without deleting.]

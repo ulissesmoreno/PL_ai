@@ -16,7 +16,7 @@ You have restricted access to the following project documents. You must ONLY rel
 - `ARCHITECTURE.md`: System design, data lifecycle, and technology stack.
 - `ENV_SETUP.md`: Database environment variables, prerequisites, and vault instructions.
 - `PLAN.md`: Acceptance criteria and database prerequisites for each stage.
-- `QUESTIONS.md`: Technical clarifications and immutable decision logs.
+- `QUESTIONS.md` *(root)*: Technical clarifications and immutable decision logs.
 - `src/infrastructure/`: Access to SQL migration files and database-driven adapters.
 
 ## Communication & Handoff

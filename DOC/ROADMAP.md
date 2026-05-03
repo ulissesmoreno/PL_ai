@@ -3,7 +3,7 @@
 This file must be **started or updated mandatorily** with each reading of `NEW-INSTRUCTIONS.md`, ensuring the plan reflects the most recent context without loss of traceability. Focus on delivery and traceability, with MVP planned at the beginning for feasibility testing.
 
 ## 🟢 PHASE 0: Foundation and Infra (Status: To Do)
-- [ ] **Initial Configuration:** Fill PROJECT.md with vision, objectives, and stack (reference: NEW_PROJECT_PROMPT.md).
+- [ ] **Initial Configuration:** Fill PROJECT.md with vision, objectives, and stack (reference: ONBOARDING.md in DOC/).
   - Criteria: All placeholders replaced; stack validated/adjusted.
   - Tests: Environment validation (basic functionality).
   - Responsible: [Name].

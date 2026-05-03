@@ -30,9 +30,25 @@ This file defines the product vision and must be filled **completely and without
 - **Developers:** [Names and roles]
 - **Reviewer:** [Who approves stages]
 
-### 5.1 AI Agent Roles
-- **Default Agents:** CEO, CTO, QA, DEV_FRONTEND, DEV_BACKEND, DBA.
-- **Creating New Agents:** If it is necessary to create a new agent (e.g., Seniority levels, CMO, Data Scientist), you must create a new `.md` file in the `AGENTS/` directory with their specific rules, document access limits, and responsibilities.
+### 5.1 Human Role — [HUMAN]
+The `[HUMAN]` role represents the **final authority** in the GSD ecosystem. This is the real person (or persons) responsible for the project.
+
+**[HUMAN] Responsibilities:**
+- Provide instructions via `NEW-INSTRUCTIONS.md` at the start of each work cycle.
+- Send the `[USER_DONE]` signal in chat to trigger the CEO Orchestration Cycle.
+- Provide the **sole and exclusive approval** for all Stage Closure Gates — no agent may authorize stage advancement unilaterally.
+- Mark stages as `[x]` in `ROADMAP.md` to confirm completion.
+- Review and approve `PLAN.md`, `TESTS.md`, and `STATE.md` summaries before sign-off.
+
+**Filling this section:** When a project starts, replace `[HUMAN]` with the actual person's name or identifier:
+- `[HUMAN:Ulisses]` — for single-person projects
+- `[HUMAN:CEO_Name]`, `[HUMAN:PO_Name]` — for teams with multiple approvers
+
+### 5.2 AI Agent Roles
+- **Active Agents by Default:** CEO, CTO, BA, QA, DEV_FRONTEND, DEV_BACKEND, DBA.
+- **Available on Demand (Dormant):** DS_ML, SECURITY, CODE_REVIEWER, DEVOPS, CMO, WRITER, ARTIST.
+- **Dormant Rule:** Agents are activated only when their domain is relevant to the current stage. A dormant agent does not participate and does not consume context.
+- **Creating New Agents:** If it is necessary to create a new agent (e.g., seniority levels, niche specialists), you must create a new `.md` file in the `AGENTS/` directory with their specific rules, document access limits, and responsibilities.
 - **Late Addition:** If a new role/agent is needed after the project has started, use `NEW-INSTRUCTIONS.md` to request and define its creation.
 
 ## 6. Risks and Mitigations

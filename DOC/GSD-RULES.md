@@ -1,6 +1,71 @@
-# GSD-RULES.md - Technical Execution Protocol (v1.2)
+# GSD-RULES.md - Technical Execution Protocol (v1.3)
 
 This document defines the inviolable development rules. Any deviation invalidates the "Done" state.
+
+---
+
+## 👑 §0. Agent Orchestration Protocol (Chain of Command)
+
+This section is the **highest-priority rule in the entire framework**. It governs how agents activate, read, and delegate before any execution begins.
+
+### 0.1 CEO Precedence — Inviolable
+
+The **[CEO] Agent is invariably the first to act** in every new work cycle or session. No other agent may begin execution without prior CEO intake and delegation.
+
+**CEO Mandatory Reading Sequence (strict order):**
+1. `DOC/GSD-RULES.md` — Align with inviolable rules. This is non-negotiable before any action.
+2. `PLAYBOOK.md` *(root)* — Review developer preferences and recurring patterns.
+3. `NEW-INSTRUCTIONS.md` *(root)* — Understand the current cycle's user directives and scope.
+4. `DOC/PLAN.md` — Validate business context and acceptance criteria before delegating.
+5. `DOC/ONBOARDING.md` — **Trigger only at the start of a brand-new project** (when `PROJECT.md` still contains placeholder values). Run the full 5-block protocol before any other action.
+
+> **Rule:** If `NEW-INSTRUCTIONS.md` contains pending questions or ambiguities, the CEO MUST register them in `QUESTIONS.md` and halt. Nothing proceeds with open questions.
+
+### 0.2 Management Layer — CEO → BA / CTO
+
+After CEO intake, execution is delegated to the **Management Layer**:
+
+| Agent | Layer | Primary Responsibility |
+| :--- | :--- | :--- |
+| **[BA]** | Management | Translates user instructions into structured BDD requirements in `PLAN.md` |
+| **[CTO]** | Management | Validates architectural feasibility and assigns technical tasks |
+
+**Management Layer Mandatory Rule:** Both `[CTO]` and `[BA]` MUST read `DOC/GSD-RULES.md` **before executing or validating any task**, to confirm that technical orders comply with the protocol and no constraint is violated.
+
+### 0.3 Technical Agents — Management → Technical
+
+Technical agents receive work **only after** the Management Layer has processed and validated the CEO's delegation:
+
+| Agents | Layer | Scope |
+| :--- | :--- | :--- |
+| `[DEV_BACKEND]`, `[DEV_FRONTEND]` | Technical | Feature implementation (TDD) |
+| `[DBA]` | Technical | Schema, migrations, persistence optimization |
+| `[DS/ML]` | Technical | ML models, data pipelines, intelligence layer |
+| `[DEVOPS]` | Technical | CI/CD, containers, infrastructure, observability |
+
+### 0.4 Quality & Review Gates
+
+Quality agents act as **mandatory gates** after technical deliveries:
+
+| Agent | When | Authority |
+| :--- | :--- | :--- |
+| `[SECURITY]` | After every stage; anytime a vulnerability is suspected | **Veto power** — can block Stage Closure Gate |
+| `[REVIEWER]` | After every atomic DEV delivery, before QA | **Reject authority** — can block QA handoff |
+| `[QA]` | After REVIEWER approval | **Stage approval** — validates acceptance criteria |
+
+### 0.5 Creative & Market Agents
+
+Activated on demand by the CEO or CMO when marketing or design output is required:
+
+| Agent | Activated By | Output |
+| :--- | :--- | :--- |
+| `[CMO]` | CEO (market validation cycles) | KPI review, roadmap alignment |
+| `[WRITER]` | CMO | Marketing copy |
+| `[ARTIST]` | CMO / WRITER | Visual marketing assets |
+
+> **Dormant Agent Rule:** Agents are called only when their domain is active. An agent with no relevant task in the current stage remains dormant and does not consume context.
+
+---
 
 ## Fundamental Principles
 Development must focus on **consistency**, **traceability**, **documentation**, and **context** over speed. All documents must be filled in **without fail** so that nothing is lost along the way. Documentation is the foundation of execution: without it, progress is invalid.
@@ -38,7 +103,9 @@ Before starting any new ROADMAP stage, the agent **must mandatorily**:
 | 7 | `PLAN.md` | "Stage Closure Gate" section (§14) filled in and approved. | `[ ]` |
 | 8 | `VERSIONS.md` | New entry added if there was a version delivery or significant milestone. | `[ ]` |
 
-> **Rule:** The agent must not start the next stage until the user explicitly confirms the previous stage is complete. A simple instruction "start stage X" **is not sufficient** — the agent must first present the checklist above and await validation.
+> **Rule:** The agent must not start the next stage until the **[HUMAN]** explicitly confirms the previous stage is complete. A simple instruction "start stage X" **is not sufficient** — the agent must first present the checklist above and await `[HUMAN]` validation.
+>
+> **[HUMAN] Authority:** The human user is the **final approval authority** for all Stage Closure Gates and roadmap advancement. No agent — including the CEO — may authorize stage advancement unilaterally. The human signals completion by sending `[USER_DONE]` in the chat or marking `[x]` in `ROADMAP.md`.
 
 ## 1.6 MVP and Feasibility
 An MVP (Minimum Viable Product) must be planned at the beginning of development, ensuring project feasibility testing. Even with all other mappings completed (architecture, stack, roadmap), the MVP is mandatory to validate initial hypotheses. Post-MVP adjustments will be controlled exclusively by the NEW-INSTRUCTIONS.md file, which will guide refinements based on feedback and feasibility tests.
@@ -123,7 +190,27 @@ For each delivery, the order is mandatory and **all documents must be filled wit
 7.6 **Mandatory Logging:** Every action performed by the solution must have logs for activity and/or error traceability. Configure structured logs (e.g.: INFO, WARN, ERROR levels) without exposing sensitive data. Record logging validations in TESTS.md.
 
 ## 8. Documentation as Code
-The project is guided by: `README.md`, `ARCHITECTURE.md`, `PROJECT.md`, `GSD-RULES.md`, `TASKS.md`, `PLAN.md`, `STATE.md`, `QUESTIONS.md`, `CONTEXT.md`, and `TESTS.md`.
+The project is guided by the following files — note their locations:
+
+| File | Location | Purpose |
+| :--- | :--- | :--- |
+| `README.md` | Root | Project overview and quick-start |
+| `PLAYBOOK.md` | Root | Developer preferences (project-agnostic) |
+| `NEW-INSTRUCTIONS.md` | **Root** | Current cycle instructions from the user |
+| `QUESTIONS.md` | **Root** | Sole clarification channel; immutable decision log |
+| `ONBOARDING.md` | `DOC/` | New project setup guide (run once per project) |
+| `GSD-RULES.md` | `DOC/` | Inviolable execution rules |
+| `ARCHITECTURE.md` | `DOC/` | Hexagonal architecture, stack, components |
+| `PROJECT.md` | `DOC/` | Vision, objectives, team, and KPIs |
+| `PLAN.md` | `DOC/` | Stage-level acceptance criteria and business rules |
+| `ROADMAP.md` | `DOC/` | High-level stage tracking |
+| `STATE.md` | `DOC/` | Current state, deliveries, and blockers |
+| `TASKS.md` | `DOC/` | Atomic task registry with statuses |
+| `TESTS.md` | `DOC/` | Test results, steps, and validations |
+| `CONTEXT.md` | `DOC/` | Decisions and context summary |
+| `ENV_SETUP.md` | `DOC/` | Environment variables and secure credential guidance |
+| `DESIGN.md` | `DOC/` | Visual identity and design tokens |
+| `VERSIONS.md` | `DOC/` | Release history and milestone log |
 
 ## 9. Installed Skills & Environment Tools
 
@@ -168,6 +255,11 @@ In addition to skills, the following external tools are recommended to complemen
 9.3.3 **Developer Suggestions:** The agent must suggest relevant external tools in `PLAN.md` (Dependencies section) when identifying needs not covered by skills.
 9.3.4 **Updates:** When new skills are installed or removed, update this section and `CONTEXT.md`.
 9.3.5 **Usage Documentation:** Record in `TESTS.md` validations that used specific skills or tools.
+9.3.6 **CTO Ownership — Antigravity Skill Mapping:** The **[CTO] Agent is the sole responsible agent** for analyzing the installed skills catalog (this section) before each roadmap stage. The CTO must:
+  - Identify which skills apply to the current stage's scope and tech stack.
+  - Communicate the selected skills to the relevant technical agents ([DEV_BACKEND], [DEV_FRONTEND], [DBA], [DS/ML], [DEVOPS]) via `.agent_handoff/`.
+  - Record the skill mapping decision in `CONTEXT.md` before any implementation begins.
+  - Update this section if new skills are installed or deprecated.
 
 ---
 **AGENT SIGNATURE:** Operating in GSD Mode - Execution on demand, quality by design.

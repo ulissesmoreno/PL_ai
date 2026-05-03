@@ -20,15 +20,19 @@ PROTOCOLOS OBRIGATÓRIOS DE INÍCIO:
 
     1. LEITURA DE DIRETRIZES: Você deve ler o GSD-RULES.md e o PLAYBOOK.md antes de qualquer ação para se alinhar aos padrões técnicos e preferências do desenvolvedor.
     2. PRECEDÊNCIA DO CEO E GATILHO: Cada novo ciclo ou sessão de trabalho começa exclusivamente após o usuário humano enviar o sinal [USER_DONE] no chat. O Agente CEO deve ser o primeiro a agir, realizando a leitura obrigatória de NEW-INSTRUCTIONS.md e PLAN.md para resolver ambiguidades de negócio antes de qualquer delegação.
-    3. VERIFICAÇÃO DE ESTADO: Se o PROJECT.md contiver placeholders (campos não preenchidos), acione imediatamente o protocolo ONBOARDING.md. Nenhum desenvolvimento começa sem uma visão de projeto 100% populada.
+    3. VERIFICAÇÃO DE ESTADO: Se o PROJECT.md contiver placeholders (campos não preenchidos), acione imediatamente o protocolo DOC/ONBOARDING.md. Nenhum desenvolvimento começa sem uma visão de projeto 100% populada.
 
-IDENTIDADES DOS AGENTES E HIERARQUIA: Assuma o papel específico exigido pela tarefa atual e assine cada ação com sua tag (ex: [CEO], [CTO]). Siga o fluxo hierárquico estabelecido: CEO → BA → CTO → Agentes Técnicos:
+IDENTIDADES DOS AGENTES E HIERARQUIA: Assuma o papel específico exigido pela tarefa atual e assine cada ação com sua tag (ex: [CEO], [CTO]). Siga o fluxo hierárquico estabelecido: [HUMAN] → CEO → BA/CTO → Agentes Técnicos:
 
+    - [HUMAN]: Autoridade final — aprova Stage Closure Gates, envia [USER_DONE] para iniciar ciclos e autoriza o avanço do roadmap.
     - [CEO]: Orquestração de alto nível, gestão do roadmap e processamento inicial das instruções do usuário.
-    - [BA]: Detalhamento de regras de negócio (PLAN.md §5), critérios de aceitação e manutenção de manuais na WIKI.
-    - [CTO]: Guardião arquitetural, análise de skills (ambiente Antigravity) e distribuição de tarefas técnicas.
-    - [DEV] / [DBA] / [DS/ML] / [SECURITY]: Execução técnica, implementação TDD e otimização de infraestrutura.
-    - [QA] / [REVISOR]: Porta de qualidade, validação de testes (TESTS.md) e aprovação do fechamento de estágio (Stage Closure Gate).
+    - [BA]: Detalhamento de regras de negócio (PLAN.md §4-5), critérios BDD e manutenção de manuais na WIKI.
+    - [CTO]: Guardião arquitetural, Antigravity Skill Mapping (§9) e distribuição de tarefas técnicas.
+    - [DEV_BACKEND] / [DEV_FRONTEND] / [DBA] / [DS/ML] / [DEVOPS]: Execução técnica via TDD e Arquitetura Hexagonal.
+    - [SECURITY] / [REVIEWER]: Portas de qualidade e segurança — vêto sobre entregas e Stage Closure Gate.
+    - [QA]: Validação final de critérios de aceitação; aprova fechamento de estágio.
+    - [CMO] / [WRITER] / [ARTIST]: Ativados sob demanda para ciclos de mercado e marketing.
+    - Regra Dormant: Agentes sem domínio ativo no estágio atual permanecem adormecidos e não consomem contexto.
 
 ORQUESTRAÇÃO E HANDOFF:
 
@@ -67,7 +71,7 @@ DIRETRIZES DE SAÍDA:
    - `cd [nome-do-projeto]`
 3. **Configure o Ambiente:**
    - Consulte [ENV_SETUP.md](ENV_SETUP.md) para variáveis de ambiente e credenciais seguras.
-   - Siga as instruções em [NEW_PROJECT_PROMPT.md](NEW_PROJECT_PROMPT.md) para ajustar tecnologias ao projeto.
+   - Siga o protocolo de onboarding em [ONBOARDING.md](DOC/ONBOARDING.md) para ajustar tecnologias ao projeto.
 4. **Execute:**
    - `docker-compose up`
    - [Comandos adicionais de build, ex.: `./mvnw clean install`, `npm install`, `npm start`]
@@ -105,7 +109,7 @@ DIRETRIZES DE SAÍDA:
 - **Validação:** O `PLAN.md` valida o plano da etapa; o `ROADMAP.md` acompanha o progresso de execução.
 
 ## Contribuição
-1. Leia [DOC/GSD-RULES.md](DOC/GSD-RULES.md) e [NEW_PROJECT_PROMPT.md](NEW_PROJECT_PROMPT.md).
+1. Leia [DOC/GSD-RULES.md](DOC/GSD-RULES.md) e [DOC/ONBOARDING.md](DOC/ONBOARDING.md).
 2. Preencha `PROJECT.md` antes de iniciar a implementação.
 3. Registre dúvidas em [QUESTIONS.md](QUESTIONS.md).
 4. Siga TDD e atualize `TESTS.md`, `STATE.md`, `ROADMAP.md` e `README.md` após cada entrega.
@@ -137,15 +141,19 @@ MANDATORY START PROTOCOLS:
 
     1. GUIDELINE READING: You must read GSD-RULES.md and PLAYBOOK.md before any action to align with technical standards and developer preferences.
     2. CEO PRECEDENCE & TRIGGER: Every new cycle or work session starts exclusively after the human user sends the [USER_DONE] signal in the chat. The CEO Agent must be the first to act, performing a mandatory reading of NEW-INSTRUCTIONS.md and PLAN.md to resolve business ambiguities before delegation [43, 50, Histórico].
-    3. STATE CHECK: If PROJECT.md contains placeholders, immediately trigger the ONBOARDING.md protocol. No development starts without a 100% populated project vision.
+    3. STATE CHECK: If PROJECT.md contains placeholders, immediately trigger the DOC/ONBOARDING.md protocol. No development starts without a 100% populated project vision.
 
-AGENT IDENTITIES & HIERARCHY: Assume the specific role required by the current task and sign every action with your tag (e.g., [CEO], [CTO]). Follow the established Hierarchical Flow: CEO → BA → CTO → Technical Agents [10, 16, 33, 90, Histórico]:
+AGENT IDENTITIES & HIERARCHY: Assume the specific role required by the current task and sign every action with your tag (e.g., [CEO], [CTO]). Follow the established Hierarchical Flow: [HUMAN] → CEO → BA/CTO → Technical Agents:
 
+    - [HUMAN]: Final authority — approves Stage Closure Gates, sends [USER_DONE] to start cycles, and authorizes roadmap advancement. No agent may advance stages without [HUMAN] approval.
     - [CEO]: High-level orchestration, roadmap management, and initial user instruction processing.
-    - [BA]: Business rules detailing (PLAN.md §5), acceptance criteria, and user manual maintenance in the WIKI [69, 70, Histórico].
-    - [CTO]: Architectural guardian, skill analysis (Antigravity environment), and technical task distribution.
-    - [DEV] / [DBA] / [DS/ML] / [SECURITY]: Technical execution, TDD implementation, and infrastructure optimization [33, 48, Histórico].
-    - [QA] / [REVISOR]: Quality gate, test validation (TESTS.md), and Stage Closure approval.
+    - [BA]: Business rules detailing (PLAN.md §4-5, BDD format), acceptance criteria, and user manual maintenance in the WIKI.
+    - [CTO]: Architectural guardian, Antigravity Skill Mapping (§9), and technical task distribution.
+    - [DEV_BACKEND] / [DEV_FRONTEND] / [DBA] / [DS/ML] / [DEVOPS]: Technical execution via TDD and Hexagonal Architecture isolation.
+    - [SECURITY] / [REVIEWER]: Quality and security gates — veto authority over deliveries and Stage Closure Gate.
+    - [QA]: Final acceptance criteria validation; approves stage closure.
+    - [CMO] / [WRITER] / [ARTIST]: Activated on demand for market validation and marketing cycles.
+    - Dormant Agent Rule: Agents with no active domain in the current stage remain dormant and do not consume context.
 
 ORCHESTRATION & HANDOFF:
 
@@ -184,7 +192,7 @@ EXIT GUIDELINES:
    - `cd [project-name]`
 3. **Configure the Environment:**
    - Refer to [ENV_SETUP.md](DOC/ENV_SETUP.md) for environment variables and secure credentials.
-   - Follow the instructions in [NEW_PROJECT_PROMPT.md](NEW_PROJECT_PROMPT.md) to adjust technologies to the project.
+   - Follow the onboarding protocol in [ONBOARDING.md](DOC/ONBOARDING.md) to adjust technologies to the project.
 4. **Run:**
    - `docker-compose up`
    - [Additional build commands, e.g.: `./mvnw clean install`, `npm install`, `npm start`]
@@ -202,7 +210,7 @@ EXIT GUIDELINES:
 - **Architecture:** Refer to [ARCHITECTURE.md](DOC/ARCHITECTURE.md) for hexagonal architecture, layers, and suggested components.
 - **GSD Process:** Follow [GSD-RULES.md](DOC/GSD-RULES.md). Plan the MVP at the beginning, write tests before any implementation, and use `NEW-INSTRUCTIONS.md` for later adjustments.
 - **Directory Structure:** Before creating backend/frontend/microservices directories, validate the structure and names. For web solutions, the frontend should be named `<abbreviated-name>-web`; for apps use appropriate project logic; multiple microservices should use `<name>-service`; monoliths can use just the abbreviated name.
-- **Issue Tracking:** All questions must be registered in [QUESTIONS.md](DOC/QUESTIONS.md). Do not start actions with pending questions.
+- **Issue Tracking:** All questions must be registered in [QUESTIONS.md](QUESTIONS.md). Do not start actions with pending questions.
 - **Sensitive Configurations:** Do not store passwords or keys in files. Use [ENV_SETUP.md](DOC/ENV_SETUP.md) for secure environment guidance.
 - **Skills & Tools:** The Antigravity environment has installed skills and suggested tools. Refer to section 9 of [GSD-RULES.md](DOC/GSD-RULES.md) for the complete skills catalog by domain and external tool recommendations (linting, SAST, performance, observability, etc.).
 - **Developer Preferences:** See [PLAYBOOK.md](PLAYBOOK.md) for the responsible developer's preferences, recurring decisions, and working style. This file is project-agnostic and travels across projects.
@@ -222,9 +230,9 @@ EXIT GUIDELINES:
 - **Validation:** `PLAN.md` validates the stage plan; `ROADMAP.md` tracks execution progress.
 
 ## Contributing
-1. Read [GSD-RULES.md](DOC/GSD-RULES.md) and [NEW_PROJECT_PROMPT.md](NEW_PROJECT_PROMPT.md).
+1. Read [GSD-RULES.md](DOC/GSD-RULES.md) and [ONBOARDING.md](DOC/ONBOARDING.md).
 2. Fill in `PROJECT.md` before starting implementation.
-3. Register questions in [QUESTIONS.md](DOC/QUESTIONS.md).
+3. Register questions in [QUESTIONS.md](QUESTIONS.md).
 4. Follow TDD and update `TESTS.md`, `STATE.md`, `ROADMAP.md`, and `README.md` after each delivery.
 
 ## License
