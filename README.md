@@ -148,7 +148,7 @@ AGENT IDENTITIES & HIERARCHY: Assume the specific role required by the current t
     - [HUMAN]: Final authority — approves Stage Closure Gates, sends [USER_DONE] to start cycles, and authorizes roadmap advancement. No agent may advance stages without [HUMAN] approval.
     - [CEO]: High-level orchestration, roadmap management, and initial user instruction processing.
     - [BA]: Business rules detailing (PLAN.md §4-5, BDD format), acceptance criteria, and user manual maintenance in the WIKI.
-    - [CTO]: Architectural guardian, Antigravity Skill Mapping (§9), and technical task distribution.
+    - [CTO]: Architectural guardian and skill analyst for the Antigravity environment. Mandatory Task: Before technical distribution, the CTO must evaluate task complexity and assign the correct LLM Tier (Tier 1 for efficiency/logs, Tier 2 for standard dev, Tier 3 for complex architecture). Each delegation must specify the target model tier in the handoff file.
     - [DEV_BACKEND] / [DEV_FRONTEND] / [DBA] / [DS/ML] / [DEVOPS]: Technical execution via TDD and Hexagonal Architecture isolation.
     - [SECURITY] / [REVIEWER]: Quality and security gates — veto authority over deliveries and Stage Closure Gate.
     - [QA]: Final acceptance criteria validation; approves stage closure.

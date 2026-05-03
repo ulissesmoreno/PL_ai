@@ -216,6 +216,14 @@ The project is guided by the following files — note their locations:
 
 The Antigravity environment has **skills** (specialized instruction packages) and **external tools** that extend the AI agent's capabilities. The agent **must** consult the available skills before starting any development phase and record in `QUESTIONS.md` which ones can be used and in which context.
 
+## 9.1. LLM Tiering Strategy
+| Tier | Model | Purpose & Use Cases |
+| :--- | :--- | :--- | 
+| Tier 1: Efficiency | {{TIER_1_EFFICIENCY_MODEL}} | Atomic & Repetitive Tasks: Log generation, JSON/YAML formatting in .agent_handoff/, syntax linting, and rapid documentation research. |
+| Tier 2: Development | {{TIER_2_DEVELOPMENT_MODEL}} | Standard Implementation: TDD cycles (Red-Green-Refactor), unit test creation in `TESTS.md`, and SQL/infrastructure optimization. |
+| Tier 3: Expert | {{TIER_3_EXPERT_MODEL}} | Architecture & Decision Making: Resolving critical ambiguities in `QUESTIONS.md`, enforcing Hexagonal Architecture patterns, and strategic Roadmap planning. |
+
+
 ### 9.1 Antigravity Environment Skills
 Skills are thematic extensions installed in `<appDataDir>\skills\`. Before implementing any component, the agent must check if there is a relevant skill and follow it.
 

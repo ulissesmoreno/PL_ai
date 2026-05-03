@@ -26,15 +26,32 @@ Configure the following variables (do not commit real values):
 - `LOG_LEVEL`: [E.g.: INFO]
 
 ## 3.1 AI Agents Configuration
-Configure the API keys and models for the specific agent roles:
-- `CEO_AGENT_MODEL`: [E.g.: gpt-4-turbo / claude-3-opus]
-- `CTO_AGENT_MODEL`: [E.g.: gpt-4-turbo / claude-3-opus]
-- `DEV_FRONT_AGENT_MODEL`: [E.g.: claude-3-sonnet / gpt-4o]
-- `DEV_BACK_AGENT_MODEL`: [E.g.: claude-3-sonnet / gpt-4o]
-- `QA_AGENT_MODEL`: [E.g.: claude-3-haiku / gpt-3.5]
-- `AI_API_KEY`: [Placeholder - secure key for LLM access]
+Configure the API keys, local endpoints, and model placeholders for the specific agent roles and the LLM Tiering logic. :
+### Agent Roles & Models
 
-**How to Configure:** Use local `.env` (do not commit) or system env vars. For production, use secrets managers.
+   - CEO_AGENT_MODEL: {{TIER_3_EXPERT_MODEL}} (High-level orchestration)
+   - BA_AGENT_MODEL: {{TIER_2_DEVELOPMENT_MODEL}} (Requirements & Business Rules)
+   - CTO_AGENT_MODEL: {{TIER_3_EXPERT_MODEL}} (Architectural Guardian & Tiering Logic)
+   - DEV_FRONT_AGENT_MODEL: {{TIER_2_DEVELOPMENT_MODEL}} (Frontend Implementation)
+   - DEV_BACK_AGENT_MODEL: {{TIER_2_DEVELOPMENT_MODEL}} (Backend & Hexagonal Architecture)
+   - DBA_AGENT_MODEL: {{TIER_2_DEVELOPMENT_MODEL}} (PostgreSQL 16 Optimization)
+   - DS_ML_AGENT_MODEL: {{TIER_2_DEVELOPMENT_MODEL}} (Data Science & Analytics)
+   - SECURITY_AGENT_MODEL: {{TIER_3_EXPERT_MODEL}} (Security & JWT implementation)
+   - QA_REVISOR_AGENT_MODEL: {{TIER_1_EFFICIENCY_MODEL}} (Testing & Stage Closure)
+   - FINANCIAL_SPECIALIST_MODEL: {{TIER_3_EXPERT_MODEL}} (Financial Analysis & Market Data)
+
+### LLM Tiering Strategy (Antigravity)
+   - TIER_1_EFFICIENCY_MODEL: [E.g.: gemini-1.5-flash] - For logs, formatting, and linting.
+   - TIER_2_DEVELOPMENT_MODEL: [E.g.: llama3.1:8b / gemini-1.5-flash] - For TDD and standard coding.
+   - TIER_3_EXPERT_MODEL: [E.g.: gemini-1.5-pro] - For architectural decisions and complex logic.
+
+### Connectivity & Keys
+   - GOOGLE_AI_API_KEY: [Secure key for Gemini Pro/Flash access]
+   - OLLAMA_HOST: http://localhost:11434 (For local Tier 2 models in agents-ai container)
+   - AI_API_KEY: [Generic placeholder for other LLM providers]
+
+
+**How to Configure:** Use local `.env` (do not commit) or system env vars. For production, use secrets managers. For the local Llama 3.1 model, ensure the WSL 2 memory is set to at least 10GB via .wslconfig.
 
 ## 4. Keys and Credentials
 - **Secure Storage:** Use vaults (e.g.: AWS Secrets, HashiCorp Vault) or encrypted env vars.
