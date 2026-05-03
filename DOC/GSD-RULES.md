@@ -123,7 +123,7 @@ For each delivery, the order is mandatory and **all documents must be filled wit
 7.6 **Mandatory Logging:** Every action performed by the solution must have logs for activity and/or error traceability. Configure structured logs (e.g.: INFO, WARN, ERROR levels) without exposing sensitive data. Record logging validations in TESTS.md.
 
 ## 8. Documentation as Code
-The project is guided by: `README.md`, `ARCHITECTURE.md`, `PROJECT.md`, `GSD-RULES.md`, `TASKS.md`, `PLAN.md`, `STATE.md`, `QUESTIONS.md`, `CONTEXT.md`, and `tests.md`.
+The project is guided by: `README.md`, `ARCHITECTURE.md`, `PROJECT.md`, `GSD-RULES.md`, `TASKS.md`, `PLAN.md`, `STATE.md`, `QUESTIONS.md`, `CONTEXT.md`, and `TESTS.md`.
 
 ## 9. Installed Skills & Environment Tools
 
