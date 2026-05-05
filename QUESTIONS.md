@@ -1,43 +1,30 @@
 # QUESTIONS
 
-This file is the immutable log of questions and answers. **Each entry must be filled with a complete timestamp and without fail; never delete anything to ensure total traceability and avoid loss of decisions.** Reminder: This is the only channel for questions; consult before any action. Register decisions in CONTEXT.md if they impact architecture.
+> Immutable log of questions and answers. Append only — never delete entries.
+> Timestamps mandatory (YYYY-MM-DD HH:MM). Each question has an inline response line for [HUMAN].
 
 ## Entry Index (For Navigation)
-- [YYYY-MM-DD HH:MM:SS] - Short title (Status)
-- [Add links or summaries here to facilitate search.]
+- [Add entries here as questions are registered]
 
 ---
 
-### [YYYY-MM-DD HH:MM:SS] Question: Short title
-- Context: [Context description]
-- Author: [Name]
-- Priority: High / Medium / Low
-- Impact: [E.g.: Architectural, Functional, Security]
-- Status: Open / Answered / Blocked
-- Question: [Full text]
-- Answer: [Answer text]
-- Decision / Action: [What was decided or action taken]
-- References: [Links to related files, e.g.: CONTEXT.md]
-
----
-
-### [YYYY-MM-DD HH:MM:SS] Question: Short title
-- Context: [Context description]
-- Author: [Name]
-- Priority: High / Medium / Low
-- Impact: [E.g.: Architectural, Functional, Security]
-- Status: Open / Answered / Blocked
-- Question: [Full text]
-- Answer: [Answer text]
-- Decision / Action: [What was decided or action taken]
-- References: [Links to related files, e.g.: CONTEXT.md]
+### [YYYY-MM-DD HH:MM] Question: Short title
+- **Context:** [Context description]
+- **Author:** [Agent tag]
+- **Priority:** High / Medium / Low
+- **Impact:** Architectural / Functional / Security / Business
+- **Status:** Open / Answered / Blocked
+- **Question:** [Full text]
+  > **Response:** [HUMAN fills here]
+- **Decision / Action:** [What was decided or action taken — filled after response]
+- **References:** [Links to related files]
 
 ---
 
 ## Structured Markers
 - [ ] Timestamp present
 - [ ] Status filled
-- [ ] Answer registered
-- [ ] Decision documented
+- [ ] Response line present for [HUMAN]
+- [ ] Decision documented after answer
 - [ ] Priority and Impact defined
 - [ ] References added

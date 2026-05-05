@@ -26,7 +26,8 @@ Configure the following variables (do not commit real values):
 - `LOG_LEVEL`: [E.g.: INFO]
 
 ## 3.1 AI Agents Configuration
-Configure the API keys, local endpoints, and model placeholders for the specific agent roles and the LLM Tiering logic. :
+Configure the API keys, local endpoints, and model placeholders for the specific agent roles and the LLM Tiering logic:
+
 ### Agent Roles & Models
 
    - CEO_AGENT_MODEL: {{TIER_3_EXPERT_MODEL}} (High-level orchestration)
@@ -51,7 +52,7 @@ Configure the API keys, local endpoints, and model placeholders for the specific
    - AI_API_KEY: [Generic placeholder for other LLM providers]
 
 
-**How to Configure:** Use local `.env` (do not commit) or system env vars. For production, use secrets managers. For the local Llama 3.1 model, ensure the WSL 2 memory is set to at least 10GB via .wslconfig.
+**How to Configure:** Use local `.env` (do not commit) or system env vars. For production, use secrets managers. For the local model, ensure the WSL 2 memory is set to at least 10GB via .wslconfig.
 
 ## 4. Keys and Credentials
 - **Secure Storage:** Use vaults (e.g.: AWS Secrets, HashiCorp Vault) or encrypted env vars.

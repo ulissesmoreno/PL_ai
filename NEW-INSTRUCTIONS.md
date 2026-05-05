@@ -1,26 +1,45 @@
 # NEW-INSTRUCTIONS
 
-This file must be filled **completely and structured** whenever there are new instructions. **Without complete population, development does not start, ensuring consistency and context at speed.**
+> **Ownership:** This file is filled **exclusively by [HUMAN]**. CEO adds timestamp and formatting only — never deletes or modifies content.
+> **Response format:** Each item or question has an inline response line for [HUMAN] to fill before CEO formats.
 
-## Updated on: YYYY-MM-DD HH:MM:SS
+## Updated on: [CEO adds timestamp after [HUMAN] fills content]
+
+---
 
 ## Objective
--
+- [HUMAN fills]
+  > Response:
 
 ## Scope
--
+- [HUMAN fills]
+  > Response:
 
 ## Deliverables
--
+- [HUMAN fills]
+  > Response:
 
 ## Constraints and Dependencies
--
+- [HUMAN fills]
+  > Response:
 
 ## Current Context
--
+- [HUMAN fills]
+  > Response:
 
 ## Notes
--
+- [HUMAN fills]
+  > Response:
+
+---
+
+## Explicit Stage Conclusion Authorization (optional)
+> Fill only if authorizing CEO/CTO/BA to conclude stages autonomously.
+
+- Authorized agents: [e.g.: CEO, CTO]
+  > Response:
+- Authorized until stage: [e.g.: Stage 2]
+  > Response:
 
 ---
 
@@ -29,4 +48,4 @@ This file must be filled **completely and structured** whenever there are new in
 - [ ] Defined scope
 - [ ] Documented constraints
 - [ ] Updated context
-- [ ] **PLAYBOOK.md reviewed** — append new entries (with timestamp) if this instruction revealed developer preferences or recurring decisions.
+- [ ] PLAYBOOK.md reviewed by CEO — new entries appended if preference revealed

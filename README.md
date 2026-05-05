@@ -1,243 +1,173 @@
 > 🇧🇷 [Português](#português) | 🇺🇸 [English](#english)
 
 <a name="português"></a>
-## 📝 Visão Geral do Projeto
-O **PF_ai** é um ecossistema de desenvolvimento assistido por inteligência artificial fundamentado no framework **GSD (Get Shit Done)**. Diferente de repositórios convencionais, este projeto utiliza uma arquitetura de múltiplos agentes (**CEO, CTO, DEV, QA**) para garantir que a construção de software seja realizada com rastreabilidade total, consistência arquitetural e qualidade técnica rigorosa.
 
-### ⚠️ Aviso de Boilerplate
-**Este documento e todos os arquivos deste repositório representam uma estrutura base (Boilerplate) no estado `v1.1.0`.** 
-Todas as informações, tecnologias, descrições e objetivos listados são modelos genéricos. **Tudo será alterado e personalizado** assim que o projeto for formalmente iniciado através do protocolo de **Onboarding**. O estado real do sistema será definido pela interação inicial entre o usuário e o Agente de Orquestração.
+# [Nome do Projeto]
+
+## Descrição
+[Descrição concisa do projeto — preenchida após onboarding.]
+
+## Objetivo
+[Resumo do propósito — preenchido após onboarding.]
+
+## Público-Alvo
+[Quem usa o sistema — preenchido após onboarding.]
 
 ---
 
 ## 🤖 Prompt Inicial para IA (Ignition Protocol)
-*Esta seção contém as instruções mestre que a IA deve ler para assumir o controle dos agentes e iniciar qualquer atividade.*
 
 ```text
-[SISTEMA DE ATIVAÇÃO GSD - OPERAÇÃO MODO EXPERT]
-Você é o Agente de Orquestração do PF_ai. Sua missão é garantir a execução do framework Get Shit Done (GSD), priorizando rastreabilidade, consistência e qualidade técnica em detrimento da velocidade.
-PROTOCOLOS OBRIGATÓRIOS DE INÍCIO:
+[SISTEMA DE ATIVAÇÃO GSD]
+Você é o Agente de Orquestração. Sua missão é executar o framework GSD priorizando rastreabilidade, consistência e qualidade técnica.
 
-    1. LEITURA DE DIRETRIZES: Você deve ler o GSD-RULES.md e o PLAYBOOK.md antes de qualquer ação para se alinhar aos padrões técnicos e preferências do desenvolvedor.
-    2. PRECEDÊNCIA DO CEO E GATILHO: Cada novo ciclo ou sessão de trabalho começa exclusivamente após o usuário humano enviar o sinal [USER_DONE] no chat. O Agente CEO deve ser o primeiro a agir, realizando a leitura obrigatória de NEW-INSTRUCTIONS.md e PLAN.md para resolver ambiguidades de negócio antes de qualquer delegação.
-    3. VERIFICAÇÃO DE ESTADO: Se o PROJECT.md contiver placeholders (campos não preenchidos), acione imediatamente o protocolo DOC/ONBOARDING.md. Nenhum desenvolvimento começa sem uma visão de projeto 100% populada.
+PROTOCOLOS OBRIGATÓRIOS:
+1. Leia GSD-RULES.md e PLAYBOOK.md antes de qualquer ação.
+2. Cada ciclo começa após o sinal [USER_DONE] do humano. CEO age primeiro.
+3. Se PROJECT.md contiver placeholders, acione DOC/ONBOARDING.md imediatamente.
 
-IDENTIDADES DOS AGENTES E HIERARQUIA: Assuma o papel específico exigido pela tarefa atual e assine cada ação com sua tag (ex: [CEO], [CTO]). Siga o fluxo hierárquico estabelecido: [HUMAN] → CEO → BA/CTO → Agentes Técnicos:
+HIERARQUIA: [HUMAN] → CEO → BA/CTO → Agentes Técnicos
+- [HUMAN]: autoridade final. Aprova Stage Closure Gates e autoriza avanço do roadmap.
+- [CEO]: único ponto de contato com [HUMAN]. Orquestra todos os agentes.
+- [BA] / [CTO]: camada gerencial. Avaliam complexidade e definem senioridade no kickoff.
+- Agentes técnicos: executam com seniority_level definido no handoff de kickoff.
+- [SECURITY]: fundamento estrutural — threat modeling no kickoff, auditoria no closure.
+- [TECH_LEAD]: consolida revisões paralelas, arbitra conflitos, primeira escalação antes do CTO.
 
-    - [HUMAN]: Autoridade final — aprova Stage Closure Gates, envia [USER_DONE] para iniciar ciclos e autoriza o avanço do roadmap.
-    - [CEO]: Orquestração de alto nível, gestão do roadmap e processamento inicial das instruções do usuário.
-    - [BA]: Detalhamento de regras de negócio (PLAN.md §4-5), critérios BDD e manutenção de manuais na WIKI.
-    - [CTO]: Guardião arquitetural, Antigravity Skill Mapping (§9) e distribuição de tarefas técnicas.
-    - [DEV_BACKEND] / [DEV_FRONTEND] / [DBA] / [DS/ML] / [DEVOPS]: Execução técnica via TDD e Arquitetura Hexagonal.
-    - [SECURITY] / [REVIEWER]: Portas de qualidade e segurança — vêto sobre entregas e Stage Closure Gate.
-    - [QA]: Validação final de critérios de aceitação; aprova fechamento de estágio.
-    - [CTO]: Guardião arquitetural e analista de skills para o ambiente Antigravity. Tarefa Obrigatória: Antes da distribuição técnica, o CTO deve avaliar a complexidade da tarefa e atribuir o Tier de LLM correto (Tier 1 para eficiência/logs, Tier 2 para desenvolvimento padrão, Tier 3 para arquitetura complexa). Cada delegação deve especificar o tier do modelo alvo no arquivo de handoff.
-    - Regra Dormant: Agentes sem domínio ativo no estágio atual permanecem adormecidos e não consomem contexto.
+FLUXO POR FASE:
+1. CEO + CTO + BA: intake completo (uma vez por fase).
+2. SECURITY: threat modeling.
+3. Kickoff handoff único para todos os agentes técnicos.
+4. Agentes executam. Escalação via CLARIFICATION_REQUEST (uma vez por fase).
+5. Revisão paralela no closure: SECURITY + CODE_REVIEWER + QA.
+6. TECH_LEAD consolida → CTO/BA aprovam → [HUMAN] libera PR.
 
-ORQUESTRAÇÃO E HANDOFF:
-
-    - Handoff Programático: Todas as transições entre agentes DEVEM usar arquivos JSON/YAML estruturados salvos no diretório .agent_handoff/ (ignorado pelo git).
-    - Matriz de Cobertura de Contexto: Antes de concluir um estágio, o agente responsável deve validar a leitura de seus arquivos atribuídos (ex: CEO lê docs estratégicos, CTO lê docs arquiteturais) conforme definido no STATE.md.
-
-FLUXO OPERACIONAL:
-
-    - Leia NEW-INSTRUCTIONS.md e CONTEXT.md.
-    - Resolva ambiguidades em QUESTIONS.md (A execução é bloqueada por perguntas pendentes).
-    - Siga o ciclo TDD (Red-Green-Refactor) e o isolamento da Arquitetura Hexagonal.
-    - Atualize o "cérebro" do projeto no STATE.md após cada entrega.
-
-DIRETRIZES DE SAÍDA:
-
-    - Estritamente Inglês: Toda a documentação e comentários de código devem ser feitos apenas em Inglês e/ou outro idioma a pedido do usuário.
-    - Histórico Imutável: Nunca delete informações; adicione novas entradas com timestamps (YYYY-MM-DD HH:MM).
-    - Definição de "Pronto" (DoD): Sem placeholders, 100% de testes validados no TESTS.md e aprovação do Checklist de Fechamento de Estágio pelo usuário.
+REGRAS DE SAÍDA:
+- Chat: só o essencial. "Criando repositório Y" — não descrições de processo.
+- Agente ativo assina cada resposta: [DEV_BACKEND:Pleno].
+- Detalhes vão nos arquivos .md, nunca no chat.
+- Histórico imutável: nunca deletar, sempre append com timestamp.
 ```
 
-## Descrição do Projeto
-- **Nome do Projeto:** `PROJECT_NAME`
-- **Descrição:** [Descrição concisa do projeto, baseada no PROJECT.md. Ex.: Plataforma de análise de dados financeiros com machine learning para previsão e visualização de sinais.]
-- **Objetivo:** [Resumo do propósito, ex.: validar hipóteses de negócio com MVP antes de avançar para expansão.]
-- **Público-Alvo:** [Quem usa o sistema, ex.: analistas financeiros, traders, equipe interna.]
+---
 
 ## Instalação
-1. **Pré-requisitos:**
-   - Java 21
-   - Python 3.12
-   - Angular 18 / Node.js
-   - PostgreSQL 16
-   - Docker / Docker Compose
-2. **Clone o Repositório:**
-   - `git clone [url]`
-   - `cd [nome-do-projeto]`
-3. **Configure o Ambiente:**
-   - Consulte [ENV_SETUP.md](ENV_SETUP.md) para variáveis de ambiente e credenciais seguras.
-   - Siga o protocolo de onboarding em [ONBOARDING.md](DOC/ONBOARDING.md) para ajustar tecnologias ao projeto.
-4. **Execute:**
-   - `docker-compose up`
-   - [Comandos adicionais de build, ex.: `./mvnw clean install`, `npm install`, `npm start`]
 
-## Uso do Sistema
-- **Acesso ao Frontend:** [Ex.: http://localhost:4200]
-- **APIs:** [Ex.: `POST /api/v1/analyze`, `GET /api/v1/status`]
-- **Principais Funcionalidades:**
-  - Ingestão de dados de mercado
-  - Processamento e análise via ML
-  - Visualização de resultados e sinais
-  - Segurança via JWT
+1. **Pré-requisitos:** [Preenchido após onboarding — tecnologias do stack definido]
+2. **Clone:** `git clone [url]` → `cd [projeto]`
+3. **Ambiente:** Consulte [ENV_SETUP.md](DOC/ENV_SETUP.md)
+4. **Execute:** `docker-compose up` + [comandos de build do stack]
+
+## Uso
+- **Frontend:** [URL após onboarding]
+- **APIs:** [Endpoints após onboarding]
 
 ## Desenvolvimento
-- **Arquitetura:** Consulte [ARCHITECTURE.md](ARCHITECTURE.md) para a arquitetura hexagonal, camadas, e componentes sugeridos.
-- **Processo GSD:** Siga [GSD-RULES.md](DOC/GSD-RULES.md). Planeje o MVP no início, escreva testes antes de qualquer implementação e use `NEW-INSTRUCTIONS.md` para ajustes posteriores.
-- **Estrutura de Diretórios:** Antes de criar diretórios backend/frontend/microservices, valide a estrutura e os nomes. Para soluções web, o frontend deve ser nomeado como `<nome-abreviado>-web`; para apps use lógica apropriada ao projeto; múltiplos microserviços devem usar `<nome>-service`; monólitos podem usar apenas o nome abreviado.
-- **Registro de Dúvidas:** Todas as questões devem ser registradas em [QUESTIONS.md](QUESTIONS.md). Não inicie ações com dúvidas pendentes.
-- **Configurações Sensíveis:** Não armazene senhas ou chaves em arquivos. Use [ENV_SETUP.md](ENV_SETUP.md) para orientação de ambiente seguro.
-- **Skills & Ferramentas:** O ambiente Antigravity possui skills instaladas e ferramentas sugeridas. Consulte a seção 9 de [GSD-RULES.md](DOC/GSD-RULES.md) para o catálogo completo de skills por domínio e recomendações de ferramentas externas (linting, SAST, performance, observabilidade, etc.).
-- **Preferências do Desenvolvedor:** Consulte [PLAYBOOK.md](PLAYBOOK.md) para preferências, decisões recorrentes e estilo de trabalho do desenvolvedor responsável. Este arquivo é agnóstico de projeto e viaja entre projetos.
+- **Arquitetura:** [ARCHITECTURE.md](DOC/ARCHITECTURE.md)
+- **Regras:** [GSD-RULES.md](DOC/GSD-RULES.md)
+- **Preferências:** [PLAYBOOK.md](PLAYBOOK.md)
+- **Dúvidas:** [QUESTIONS.md](QUESTIONS.md) — nunca iniciar com dúvidas pendentes.
 
 ## Testes
-- **Obrigatórios:** Testes de funcionalidade e de segurança antes de cada etapa.
-- **Documentação de testes:** Use [TESTS.md](TESTS.md) para registrar resultados, passos e validações.
-- **Execução:**
-  - Java: `./mvnw test` ou `mvn test`
-  - Python: `pytest`
-  - Frontend: `npm test`
-- **Log de atividades:** Toda ação da solução deve possuir logs para rastreabilidade de atividades e erros (ver [DOC/GSD-RULES.md](DOC/GSD-RULES.md)).
+- Java: `./mvnw test` | Python: `pytest` | Frontend: `npm test`
+- Resultados: [TESTS.md](DOC/TESTS.md)
 
-## Roadmap e Estado
-- **Acompanhamento:** Use [ROADMAP.md](ROADMAP.md) para acompanhar o desenvolvimento.
-- **Progresso:** Consulte [STATE.md](STATE.md) para o estado atual e próximos passos.
-- **Validação:** O `PLAN.md` valida o plano da etapa; o `ROADMAP.md` acompanha o progresso de execução.
+## Roadmap
+- Progresso: [ROADMAP.md](DOC/ROADMAP.md)
+- Estado atual: [STATE.md](DOC/STATE.md)
 
 ## Contribuição
-1. Leia [DOC/GSD-RULES.md](DOC/GSD-RULES.md) e [DOC/ONBOARDING.md](DOC/ONBOARDING.md).
-2. Preencha `PROJECT.md` antes de iniciar a implementação.
+1. Leia [GSD-RULES.md](DOC/GSD-RULES.md) e [ONBOARDING.md](DOC/ONBOARDING.md).
+2. Preencha `PROJECT.md` antes de implementar.
 3. Registre dúvidas em [QUESTIONS.md](QUESTIONS.md).
-4. Siga TDD e atualize `TESTS.md`, `STATE.md`, `ROADMAP.md` e `README.md` após cada entrega.
+4. Siga TDD e atualize `TESTS.md`, `STATE.md`, `ROADMAP.md` após cada entrega.
 
 ## Licença
-[Placeholder para licença]
-
-## Contato
-[Placeholder para contato]
+[Preenchido após onboarding]
 
 ---
 
 <a name="english"></a>
 
-# PF_ai (English)
+# [Project Name]
 
-Project Overview
-PF_ai is an AI-assisted development ecosystem based on the GSD (Get Shit Done) framework. Unlike conventional repositories, this project utilizes a multi-agent architecture (CEO, CTO, DEV, QA) to ensure that software construction is performed with total traceability, architectural consistency, and rigorous technical quality.
-⚠️ Boilerplate Notice
-This document and all files in this repository represent a base structure (Boilerplate) in version v1.1.0. All information, technologies, descriptions, and objectives listed below are generic templates. Everything will be changed and customized once the project is formally started through the Onboarding protocol.
+## Description
+[Concise project description — filled after onboarding.]
 
---------------------------------------------------------------------------------
+## Objective
+[Purpose summary — filled after onboarding.]
+
+## Target Audience
+[Who uses the system — filled after onboarding.]
+
+---
+
 ## 🤖 Initial AI Prompt (Ignition Protocol)
-This section contains the master instructions for the AI agents.
+
 ```text
-[GSD ACTIVATION SYSTEM - EXPERT MODE OPERATION]
-You are the Orchestration Agent of PF_ai. Your mission is to ensure the execution of the Get Shit Done (GSD) framework, prioritizing traceability, consistency, and technical quality over speed.
-MANDATORY START PROTOCOLS:
+[GSD ACTIVATION SYSTEM]
+You are the Orchestration Agent. Your mission is to execute the GSD framework prioritizing traceability, consistency, and technical quality.
 
-    1. GUIDELINE READING: You must read GSD-RULES.md and PLAYBOOK.md before any action to align with technical standards and developer preferences.
-    2. CEO PRECEDENCE & TRIGGER: Every new cycle or work session starts exclusively after the human user sends the [USER_DONE] signal in the chat. The CEO Agent must be the first to act, performing a mandatory reading of NEW-INSTRUCTIONS.md and PLAN.md to resolve business ambiguities before delegation [43, 50, Histórico].
-    3. STATE CHECK: If PROJECT.md contains placeholders, immediately trigger the DOC/ONBOARDING.md protocol. No development starts without a 100% populated project vision.
+MANDATORY PROTOCOLS:
+1. Read GSD-RULES.md and PLAYBOOK.md before any action.
+2. Every cycle starts after the [USER_DONE] signal from the human. CEO acts first.
+3. If PROJECT.md contains placeholders, trigger DOC/ONBOARDING.md immediately.
 
-AGENT IDENTITIES & HIERARCHY: Assume the specific role required by the current task and sign every action with your tag (e.g., [CEO], [CTO]). Follow the established Hierarchical Flow: [HUMAN] → CEO → BA/CTO → Technical Agents:
+HIERARCHY: [HUMAN] → CEO → BA/CTO → Technical Agents
+- [HUMAN]: final authority. Approves Stage Closure Gates and authorizes roadmap advancement.
+- [CEO]: single point of contact with [HUMAN]. Orchestrates all agents.
+- [BA] / [CTO]: management layer. Assess complexity and define seniority at kickoff.
+- Technical agents: execute with seniority_level defined in kickoff handoff.
+- [SECURITY]: structural foundation — threat modeling at kickoff, audit at closure.
+- [TECH_LEAD]: consolidates parallel reviews, arbitrates conflicts, first escalation before CTO.
 
-    - [HUMAN]: Final authority — approves Stage Closure Gates, sends [USER_DONE] to start cycles, and authorizes roadmap advancement. No agent may advance stages without [HUMAN] approval.
-    - [CEO]: High-level orchestration, roadmap management, and initial user instruction processing.
-    - [BA]: Business rules detailing (PLAN.md §4-5, BDD format), acceptance criteria, and user manual maintenance in the WIKI.
-    - [CTO]: Architectural guardian and skill analyst for the Antigravity environment. Mandatory Task: Before technical distribution, the CTO must evaluate task complexity and assign the correct LLM Tier (Tier 1 for efficiency/logs, Tier 2 for standard dev, Tier 3 for complex architecture). Each delegation must specify the target model tier in the handoff file.
-    - [DEV_BACKEND] / [DEV_FRONTEND] / [DBA] / [DS/ML] / [DEVOPS]: Technical execution via TDD and Hexagonal Architecture isolation.
-    - [SECURITY] / [REVIEWER]: Quality and security gates — veto authority over deliveries and Stage Closure Gate.
-    - [QA]: Final acceptance criteria validation; approves stage closure.
-    - [CMO] / [WRITER] / [ARTIST]: Activated on demand for market validation and marketing cycles.
-    - Dormant Agent Rule: Agents with no active domain in the current stage remain dormant and do not consume context.
+PHASE FLOW:
+1. CEO + CTO + BA: full intake (once per phase).
+2. SECURITY: threat modeling.
+3. Single kickoff handoff to all technical agents.
+4. Agents execute. Escalation via CLARIFICATION_REQUEST (once per phase).
+5. Parallel review at closure: SECURITY + CODE_REVIEWER + QA.
+6. TECH_LEAD consolidates → CTO/BA approve → [HUMAN] releases PR.
 
-ORCHESTRATION & HANDOFF:
-
-    - Programmatic Handoff: All transitions between agents MUST use structured JSON/YAML files saved in the .agent_handoff/ directory (ignored by git).
-    - Context Coverage Matrix: Before completing a stage, the responsible agent must validate the reading of their assigned files (e.g., CEO reads Strategic docs, CTO reads Architectural docs) as defined in STATE.md [119, Histórico].
-
-OPERATIONAL FLOW:
-
-    - Read NEW-INSTRUCTIONS.md and CONTEXT.md.
-    - Resolve ambiguities in QUESTIONS.md (Execution is blocked by pending questions).
-    - Follow the TDD cycle (Red-Green-Refactor) and Hexagonal Architecture isolation.
-    - Update the project "brain" in STATE.md after every delivery.
-
-EXIT GUIDELINES:
-
-    - Strictly English: All documentation and code comments must be written only in English and/or another language at the user's request..
-    - Immutable History: Never delete information; append with timestamps (YYYY-MM-DD HH:MM).
-    - Definition of "Done" (DoD): No remaining placeholders, 100% validated tests in TESTS.md, and user approval of the Stage Closure Checklist.
+OUTPUT RULES:
+- Chat: only the essential. "Creating repository Y" — not process descriptions.
+- Active agent signs every response: [DEV_BACKEND:Pleno].
+- Details go into .md files, never in chat.
+- Immutable history: never delete, always append with timestamp.
 ```
 
-## Project Description
-- **Project Name:** `PROJECT_NAME`
-- **Description:** [Concise project description, based on PROJECT.md. E.g.: Financial data analysis platform with machine learning for signal prediction and visualization.]
-- **Objective:** [Purpose summary, e.g.: validate business hypotheses with MVP before advancing to expansion.]
-- **Target Audience:** [Who uses the system, e.g.: financial analysts, traders, internal team.]
+---
 
 ## Installation
-1. **Prerequisites:**
-   - Java 21
-   - Python 3.12
-   - Angular 18 / Node.js
-   - PostgreSQL 16
-   - Docker / Docker Compose
-2. **Clone the Repository:**
-   - `git clone [url]`
-   - `cd [project-name]`
-3. **Configure the Environment:**
-   - Refer to [ENV_SETUP.md](DOC/ENV_SETUP.md) for environment variables and secure credentials.
-   - Follow the onboarding protocol in [ONBOARDING.md](DOC/ONBOARDING.md) to adjust technologies to the project.
-4. **Run:**
-   - `docker-compose up`
-   - [Additional build commands, e.g.: `./mvnw clean install`, `npm install`, `npm start`]
 
-## System Usage
-- **Frontend Access:** [E.g.: http://localhost:4200]
-- **APIs:** [E.g.: `POST /api/v1/analyze`, `GET /api/v1/status`]
-- **Main Features:**
-  - Market data ingestion
-  - Processing and analysis via ML
-  - Results and signals visualization
-  - Security via JWT
+1. **Prerequisites:** [Filled after onboarding]
+2. **Clone:** `git clone [url]` → `cd [project]`
+3. **Environment:** See [ENV_SETUP.md](DOC/ENV_SETUP.md)
+4. **Run:** `docker-compose up` + [stack build commands]
+
+## Usage
+- **Frontend:** [URL after onboarding]
+- **APIs:** [Endpoints after onboarding]
 
 ## Development
-- **Architecture:** Refer to [ARCHITECTURE.md](DOC/ARCHITECTURE.md) for hexagonal architecture, layers, and suggested components.
-- **GSD Process:** Follow [GSD-RULES.md](DOC/GSD-RULES.md). Plan the MVP at the beginning, write tests before any implementation, and use `NEW-INSTRUCTIONS.md` for later adjustments.
-- **Directory Structure:** Before creating backend/frontend/microservices directories, validate the structure and names. For web solutions, the frontend should be named `<abbreviated-name>-web`; for apps use appropriate project logic; multiple microservices should use `<name>-service`; monoliths can use just the abbreviated name.
-- **Issue Tracking:** All questions must be registered in [QUESTIONS.md](QUESTIONS.md). Do not start actions with pending questions.
-- **Sensitive Configurations:** Do not store passwords or keys in files. Use [ENV_SETUP.md](DOC/ENV_SETUP.md) for secure environment guidance.
-- **Skills & Tools:** The Antigravity environment has installed skills and suggested tools. Refer to section 9 of [GSD-RULES.md](DOC/GSD-RULES.md) for the complete skills catalog by domain and external tool recommendations (linting, SAST, performance, observability, etc.).
-- **Developer Preferences:** See [PLAYBOOK.md](PLAYBOOK.md) for the responsible developer's preferences, recurring decisions, and working style. This file is project-agnostic and travels across projects.
+- **Architecture:** [ARCHITECTURE.md](DOC/ARCHITECTURE.md)
+- **Rules:** [GSD-RULES.md](DOC/GSD-RULES.md)
+- **Preferences:** [PLAYBOOK.md](PLAYBOOK.md)
+- **Questions:** [QUESTIONS.md](QUESTIONS.md) — never start with pending questions.
 
 ## Testing
-- **Mandatory:** Functionality and security tests before each stage.
-- **Test Documentation:** Use [TESTS.md](DOC/TESTS.md) to record results, steps, and validations.
-- **Execution:**
-  - Java: `./mvnw test` or `mvn test`
-  - Python: `pytest`
-  - Frontend: `npm test`
-- **Activity Logging:** Every system action must have logs for activity and error traceability (see [GSD-RULES.md](DOC/GSD-RULES.md)).
+- Java: `./mvnw test` | Python: `pytest` | Frontend: `npm test`
+- Results: [TESTS.md](DOC/TESTS.md)
 
-## Roadmap and State
-- **Tracking:** Use [ROADMAP.md](DOC/ROADMAP.md) to track development.
-- **Progress:** Refer to [STATE.md](DOC/STATE.md) for the current state and next steps.
-- **Validation:** `PLAN.md` validates the stage plan; `ROADMAP.md` tracks execution progress.
+## Roadmap
+- Progress: [ROADMAP.md](DOC/ROADMAP.md)
+- Current state: [STATE.md](DOC/STATE.md)
 
 ## Contributing
 1. Read [GSD-RULES.md](DOC/GSD-RULES.md) and [ONBOARDING.md](DOC/ONBOARDING.md).
-2. Fill in `PROJECT.md` before starting implementation.
+2. Fill `PROJECT.md` before implementing.
 3. Register questions in [QUESTIONS.md](QUESTIONS.md).
-4. Follow TDD and update `TESTS.md`, `STATE.md`, `ROADMAP.md`, and `README.md` after each delivery.
+4. Follow TDD and update `TESTS.md`, `STATE.md`, `ROADMAP.md` after each delivery.
 
 ## License
-[License placeholder]
-
-## Contact
-[Contact placeholder]
-
+[Filled after onboarding]
